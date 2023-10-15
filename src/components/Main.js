@@ -5,16 +5,14 @@
  @Description:
  @Update: 2023-10-13 13:57
  */
-import {Outlet, Route, Routes} from "react-router-dom";
-import AuthRoute from "../util/route/AuthRoute";
-import routes from "../util/route/routes";
-
+import {Outlet} from "react-router-dom";
 
 function Main(){
     return(
         <div className={'main'}>
             {/*// 路由配置*/}
             <div className={'container'}>
+                {/*子路由视图位置*/}
                 <Outlet></Outlet>
             </div>
 

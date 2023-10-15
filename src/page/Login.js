@@ -52,8 +52,8 @@ function Login(props){
                              if(data.code==200){
                                  const store =new Store()
                                  console.log(data)
-                                 Store.setStore('userInfo',data.loginUser)
-                                 Store.setStore('token','Bearer '+data.token)
+                                 store.setStore('userInfo',data.loginUser)
+                                 store.setStore('token','Bearer '+data.token)
                                  alert(data.msg)
                                  navigate('/home')
                              }else{

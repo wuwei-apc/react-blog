@@ -18,11 +18,19 @@ class Store{
     getStore(key){
         let storeData = JSON.parse(localStorage.getItem(key))
         // 获取当前时间
-        const time = new Date().getTime()
-        if(time<storeData.time){
-            return storeData.value
+        if(storeData){
+            const time = new Date().getTime()
+            if(time<storeData.time){
+                return storeData.value
+            }
         }
         return null
+    }
+    delStore(key){
+        // 清除所有缓存
+        // localStorage.clear()
+        // 定向清除
+        localStorage.removeItem(key)
     }
 }
 
