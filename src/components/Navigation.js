@@ -40,6 +40,7 @@ function Navigation(){
                 <li className={'headLi'}><Linkto path={'/history'} content={'历史'} /></li>
                 <li className={'headLi'}><Linkto path={'/login'} content={'登录'} /></li>
                 <li className={'headLi'}>
+                    {/*增加退出功能*/}
                     <Linkto path={'/logOut'} content={'退出'}/>
                 </li>
                 <li className={'headLi'}>
