@@ -5,7 +5,7 @@
  @Description:
  @Update: 2023-10-15 10:59
  */
-import Home,{action as homeAction} from "../../page/Home";
+import Home from "../../page/Home";
 import {Container} from "../../page/Container";
 import {createBrowserRouter, redirect} from "react-router-dom";
 import ErrorPage from "../../page/ErrorPage";
@@ -18,7 +18,6 @@ import Recommend from "../../page/Recommend";
 import UserInfo from "../../page/UserInfo";
 import Message from "../../page/Message";
 import ViewHistory from "../../page/ViewHistory";
-import login from "../../page/Login";
 import Store from "../store/store";
 
 // const routes={
@@ -41,9 +40,9 @@ import Store from "../store/store";
 //     ]
 // }
 
-const handle=()=>{
-    console.log("hello")
-}
+// const handle=()=>{
+//     console.log("hello")
+// }
 const router =createBrowserRouter([
     {
         path:'/',

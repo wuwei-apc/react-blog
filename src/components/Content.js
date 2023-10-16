@@ -14,10 +14,9 @@ import GetInfo from "../util/request/getInfo";
 function Content(){
     const [data,setData] = useState([])
     useEffect(() => {
-        GetInfo.getAllArticle().then(data=>{
+        const getInfo = new GetInfo()
+        getInfo.getAllArticle().then(data=>{
             setData(data.obj)
-            // console.log(data.obj)
-            // let context=JSON.parse(data.obj[0].context)
         })
     }, []);
     return(

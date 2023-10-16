@@ -12,6 +12,7 @@ import MyUpload from "../components/MyUpload";
  */
 // import {useState} from "react";
 import Send from "../util/request/send";
+import send from "../util/request/send";
 
 function Register(props){
     let navigator =useNavigate()
@@ -43,6 +44,7 @@ function Register(props){
             form.append('password',password.current.value)
             form.append('status',0)
             form.append('file',file)
+            const Send = new send()
             Send.register(form).then(res=>{
                 if (res.code==200){
                        alert(res.msg+"请登录!")

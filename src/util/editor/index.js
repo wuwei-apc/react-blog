@@ -7,13 +7,11 @@
  */
 import {
     createEditor,
-    Descendant,
     Editor,
     Element as SlateElement,
     Node as SlateNode,
     Point,
     Range,
-    Node,
     Text,
     Transforms,
 } from 'slate'
@@ -21,7 +19,6 @@ import { Editable, ReactEditor, Slate, withReact } from 'slate-react'
 import React, {useCallback, useMemo, useState} from "react";
 // 导入editor样式
 import './editor.css'
-import MySerialize from "./MySerialize";
 import { withHistory } from 'slate-history'
 import escapeHtml from 'escape-html'
 import {SHORTCUTS} from './MyElement'
@@ -107,9 +104,6 @@ function MyEditor(props){
                 return `<p>${children}</p>`
         }
     }
-    const result = value.map(
-        n=> serializeNode(n)
-    ).join('\n')
     return (
         <Slate editor={editor} initialValue={value} onChange={value=>setValue(value)}>
             <div className={'textTool'}>

@@ -8,11 +8,10 @@ import Send from "../util/request/send";
  @Update: 2023-10-13 10:40
  */
 // Import React dependencies.
-import React, {useCallback, useMemo, useState} from 'react'
-import Editor from "../util/editor";
+import React, { useState} from 'react'
 import MyEditor from "../util/editor";
+import send from "../util/request/send";
 function IssueEssay(){
-    const [context,setContext] =useState()
     let article ={
         articleAddTime: "",
         articleCoverUrl: "",
@@ -25,8 +24,9 @@ function IssueEssay(){
         articleViewingNumber: 0,
     }
     function publish(context){
-        console.log(context)
+        // console.log(context)
         article.context=JSON.stringify(context)
+        const Send = new send()
         Send.addArticle(article).then(
             res=>{
                 console.log(res)

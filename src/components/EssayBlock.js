@@ -5,7 +5,6 @@
  @Description:
  @Update: 2023-10-13 11:50
  */ import React, {useEffect, useState} from "react";
-import GetInfo from "../util/request/getInfo";
 import MySerialize from "../util/editor/MySerialize";
 
 function EssayBlock(props){

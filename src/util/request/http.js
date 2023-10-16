@@ -80,4 +80,4 @@ class http {
 }
 
 
-export default new http()
+export default http

@@ -8,11 +8,11 @@
 import http from './http'
 
 
-class Send{
-
+class Send extends http{
       addArticle(params){
           return new Promise(
-              (resolve,reject)=>{http.post('/article/insertArticle',params).then(
+              (resolve,reject)=>{
+                  super.post('/article/insertArticle',params).then(
                   res=>{
                       resolve(res)
                         // console.log(res)
@@ -25,7 +25,7 @@ class Send{
       Login(params){
           return new Promise(
               (resolve, reject)=>{
-                  http.post(`/login?username=${params.username}&password=${params.password}`).then(res=>{
+                  super.post(`/login?username=${params.username}&password=${params.password}`).then(res=>{
                       resolve(res)
                   }).catch(error=>{
                       reject(error)
@@ -37,7 +37,7 @@ class Send{
       register(params){
           return new Promise(
               (resolve, reject)=>{
-                  http.post('/user/insertUser',params).then(res=>{
+                  super.post('/user/insertUser',params).then(res=>{
                       resolve(res)
                   }).catch(error=>{
                       reject(error)
@@ -48,4 +48,4 @@ class Send{
 }
 
 
-export default new Send()
+export default Send

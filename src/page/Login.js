@@ -9,6 +9,7 @@ import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import Send from "../util/request/send";
 import Store from "../util/store/store";
+import send from "../util/request/send";
 
 function Login(props){
     const  navigate = useNavigate()
@@ -45,8 +46,7 @@ function Login(props){
                  }}  value={form.password} type="password" placeholder="password"/>
                  <div className="submit">
                      <button className={'loginButton'} onClick={()=>{
-                         // navigate('/home')
-                         // console.log(form)
+                         const Send = new send()
                          Send.Login(form).then(data=>{
                              // == 不能用 ===
                              if(data.code==200){
@@ -58,7 +58,6 @@ function Login(props){
                                  navigate('/home')
                              }else{
                                  alert(data.msg)
-                                 // navigate('/home')
                              }
                          })
                      }}>Submit</button>

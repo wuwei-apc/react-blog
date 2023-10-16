@@ -15,7 +15,8 @@ function UserInfo(){
     }, []);
 
     function getAllUserInfo(){
-        GetInfo.getAllUser().then(data => {
+        const getInfo = new GetInfo()
+        getInfo.getAllUser().then(data => {
                 if(data.obj){
                     setData(data.obj)
                 }

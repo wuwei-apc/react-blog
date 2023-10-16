@@ -10,13 +10,12 @@
 import http from './http'
 
 
-class GetInfo{
-
+class GetInfo extends http{
     // 获取所有用户信息
       getAllUser(){
           return new Promise(
               (resolve,reject)=>{
-                  http.get('/user/getAllUsers').then(
+                  super.get('/user/getAllUsers').then(
                       res=>{
                           resolve(res)
                       }
@@ -30,7 +29,7 @@ class GetInfo{
     getAllArticle(){
         return new Promise(
             (resolve,reject)=>{
-                http.get('/article/getAllArticle').then(
+                super.get('/article/getAllArticle').then(
                     res=>{
                         resolve(res)
                     }
@@ -43,4 +42,4 @@ class GetInfo{
     }
 }
 
-export default new GetInfo()
+export default GetInfo
