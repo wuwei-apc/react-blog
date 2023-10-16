@@ -10,6 +10,8 @@ import Main from "../components/Main";
 import Navigation from "../components/Navigation";
 import {redirect, Route, Routes, useHref, useInRouterContext, useLocation, useSubmit} from "react-router-dom";
 import store from "../util/store/store";
+import {useEffect} from "react";
+import Store from "../util/store/store";
 
 
 // export async function action({request,params})
@@ -27,15 +29,13 @@ import store from "../util/store/store";
 //     }
 // }
 function Home(){
-    // 发送表单到相应路由
-    // let submit = useSubmit();
-    // submit({test:'test'}, {
-    //     method: "delete",
-    //     action: "/123",
-    // });
+    useEffect(() => {
+        // if(new Store().getStore('token')){
+        //     window.location.reload()
+        // }
+        // window.location.reload()
+    }, []);
     const location =useLocation()
-    // const href = useInRouterContext()
-    //  console.log(href)
     return (
         <div className={'Home'}>
             <div className={'backgroundMain'}>

@@ -10,6 +10,7 @@ import React, {useEffect, useState} from "react";
 import Send from "../util/request/send";
 import Store from "../util/store/store";
 import send from "../util/request/send";
+import instance from "../util/request";
 
 function Login(props){
     const  navigate = useNavigate()
@@ -51,11 +52,10 @@ function Login(props){
                              // == 不能用 ===
                              if(data.code==200){
                                  const store =new Store()
-                                 console.log(data)
                                  store.setStore('userInfo',data.loginUser)
                                  store.setStore('token','Bearer '+data.token)
                                  alert(data.msg)
-                                 navigate('/home')
+                                 navigate('/')
                              }else{
                                  alert(data.msg)
                              }

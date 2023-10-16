@@ -6,9 +6,11 @@
  @Update: 2023-10-13 13:57
  */
 import Linkto from "./Linkto";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
+import Store from "../util/store/store";
 
 function Navigation(){
+    const location =useLocation()
     return(
         <div className={'nav'}>
             <ul className={'headUl'}>
@@ -39,10 +41,15 @@ function Navigation(){
                 <li className={'headLi'}><Linkto path={'/message'} content={'消息'} /></li>
                 <li className={'headLi'}><Linkto path={'/history'} content={'历史'} /></li>
                 <li className={'headLi'}><Linkto path={'/login'} content={'登录'} /></li>
-                <li className={'headLi'}>
+                {
+                    // const store =new Store()
+                    // if(store)
+                    new Store().getStore('token')?
+                    <li  className={'headLi'}>
                     {/*增加退出功能*/}
                     <Linkto path={'/logOut'} content={'退出'}/>
-                </li>
+                    </li>:null
+                }
                 <li className={'headLi'}>
                     <Linkto path={'/issueEssay'} content={'发布'}/>
                 </li>

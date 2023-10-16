@@ -8,19 +8,19 @@
 import axios from "axios";
 import Store from "../store/store";
 
-
-const instance = axios.create(
+const  instance = axios.create(
     {
         baseURL:'http://localhost:8083/blog',
     }
 )
-
-const store =new Store()
-const token =store.getStore('token')
-if (token)
-{
+function createInstance(){
+    // 创建instance实例，解决store更新而实例配置未更新问题
+    let store =new Store()
+    let token =store.getStore('token')
     instance.defaults.headers.common['Authorization'] = token
+    return instance
 }
 
-export default instance
+
+export default createInstance
 

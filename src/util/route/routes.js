@@ -19,6 +19,7 @@ import UserInfo from "../../page/UserInfo";
 import Message from "../../page/Message";
 import ViewHistory from "../../page/ViewHistory";
 import Store from "../store/store";
+import AuthRoute from "./AuthRoute";
 
 // const routes={
 //     App:[
@@ -43,18 +44,27 @@ import Store from "../store/store";
 // const handle=()=>{
 //     console.log("hello")
 // }
+async function logOut() {
+    const store =new Store()
+    //清除token
+    store.delStore('token')
+    //清除userInfo
+    store.delStore('userInfo')
+    return redirect("/home");
+}
 const router =createBrowserRouter([
     {
         path:'/',
         element:<Home/>,
         errorElement:<ErrorPage/>,
         // 页面渲染时触发
-        loader:async({request,params})=> {
-            if (!new Store().getStore('token')) {
-                return redirect("/login")
-            }
-            return null
-        },
+        // loader:async({request,params})=> {
+        //     return null
+        //     // if (!new Store().getStore('token')) {
+        //     //     return redirect("/login")
+        //     // }
+        //     // return null
+        // },
         // 发送form表单时触发
         // action:async (params,request)=>{
         //     console.log(params,request)
@@ -73,7 +83,8 @@ const router =createBrowserRouter([
             },
             {
                 path:"history",
-                element:<ViewHistory/>
+                element:<ViewHistory/>,
+                loader:AuthRoute,
             },
             {
                 path:"hotEssay",
@@ -85,7 +96,8 @@ const router =createBrowserRouter([
             },
             {
                 path:'issueEssay',
-                element:<IssueEssay/>
+                element:<IssueEssay/>,
+                loader:AuthRoute
             },
             {
                 path:'essayDetail',
@@ -97,11 +109,13 @@ const router =createBrowserRouter([
             },
             {
                 path:"userInfo",
-                element:<UserInfo/>
+                element:<UserInfo/>,
+                loader:AuthRoute
             },
             {
                 path:"message",
-                element:<Message/>
+                element:<Message/>,
+                loader:AuthRoute
             }
 
         ]
@@ -119,16 +133,11 @@ const router =createBrowserRouter([
     {
       path:'/register',
       element:<Container/>
-    },{
+    },
+    {
         path:'/logOut',
-        async loader() {
-            const store =new Store()
-            //清除token
-            store.delStore('token')
-            //清除userInfo
-            store.delStore('userInfo')
-            return redirect("/login");
-        }
+        loader:logOut
+
     }
 ])
 

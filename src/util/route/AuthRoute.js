@@ -7,15 +7,16 @@
  */
 import {redirect, useNavigate} from "react-router-dom";
 import store from "../store/store";
+import Store from "../store/store";
 
 
 
 
-// export async function action({ request, params }) {
-//     const formData = await request.formData();
-//     const updates = Object.fromEntries(formData);
-//     await updateContact(params.contactId, updates);
-//     return redirect(`/contacts/${params.contactId}`);
-// }
+async function AuthRoute({request,params}){
+    if (!new Store().getStore('token')) {
+        return redirect("/login")
+    }
+    return null
+}
 
-// export default AuthRoute
+export default AuthRoute

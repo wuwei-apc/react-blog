@@ -5,13 +5,13 @@
  @Description: axois封装
  @Update: 2023-10-13 19:42
  */
-import instance from './index'
-
+import createInstance from "./index";
 class http {
+    instance  =createInstance()
     post(path,params){
         return new Promise(
             (resolve,reject)=>{
-                instance.post(path,params).then(
+                this.instance.post(path,params).then(
                     (res)=>{
                         // console.log(res)
                         // 只返回数据部分
@@ -26,7 +26,7 @@ class http {
     get(path,params){
         return new Promise(
             (resolve,reject)=>{
-                instance.get(path,params).then(
+                this.instance.get(path,params).then(
                     (res)=>{
                         resolve(res.data)
                     }
@@ -38,7 +38,7 @@ class http {
     delete(path,params){
         return new Promise(
             (resolve,reject)=>{
-                instance.delete(path,params).then(
+                this.instance.delete(path,params).then(
                     (res)=>{
                         // console.log(res)
                         resolve(res)
@@ -52,7 +52,7 @@ class http {
     put(path,params){
         return new Promise(
             (resolve,reject)=>{
-                instance.put(path,params).then(
+                this.instance.put(path,params).then(
                     (res)=>{
                         // console.log(res)
                         resolve(res)
@@ -66,7 +66,7 @@ class http {
     patch(path,params){
         return new Promise(
             (resolve,reject)=>{
-                instance.patch(path,params).then(
+                this.instance.patch(path,params).then(
                     (res)=>{
                         // console.log(res)
                         resolve(res)
